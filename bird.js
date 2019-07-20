@@ -1,5 +1,9 @@
 const birdup = 25;
+let fly = new Audio();
+let alngthe=new  Audio()
 let Ojectbird = function (canvas, x, y, img) {
+    fly.src = "sounds/fly.mp3";
+    alngthe.src="sounds/11.mp3"
     this.canvas = canvas;
     this.ctx = canvas.getContext('2d');
     this.x = x;
@@ -36,5 +40,7 @@ document.addEventListener("keydown", moveUp);
 
 function moveUp() {
     drawbird.fly();
+    fly.play();
+    alngthe.play();
 }
 

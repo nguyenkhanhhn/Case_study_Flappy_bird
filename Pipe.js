@@ -3,17 +3,36 @@ let PipeSouth = new Image();
 let birdd = new Image();
 let bg = new Image();
 let fg = new Image();
-birdd.src = "./images/bird.png";
-bg.src = './images/bg.png';
-fg.src = './images/fg.png';
-pipeNorth.src = './images/pipeNorth.png';
-PipeSouth.src = './images/PipeSouth.png';
-let gap = 100;
+birdd.src = "images/bird.png";
+bg.src = 'images/bg.png';
+fg.src = 'images/fg.png';
+pipeNorth.src = 'images/pipeNorth.png';
+PipeSouth.src = 'images/PipeSouth.png';
+var scor = new Audio();
+
+
+
+// imgNames = ["bg.png","pipeNorth.png","pipeSouth","fg.png", "bird.png"];
+// function loadImage() {
+//     let imgCount = 0;
+//     for (var i = 0; i < imgNames.length; i++) {
+//         let img = new Image();
+//         img.src = "images/" + imgNames[i];
+//         img.onloadedmetadata = function() {
+//             imgCount++;
+//             if (imgCount == imgNames.length) {
+//                 Oracale();
+//             }
+//         }
+//     }
+// }
+let gap = 120;
 let constant = pipeNorth.height + gap;
-let pipesize=125;
+let pipesize=80;
 let Oracale = function (canvas) {
     this.canvas = canvas;
     this.ctx = canvas.getContext("2d");
+    scor.src = "sounds/score.mp3";
     let pipe = [];
 
     pipe[0] = {
@@ -24,8 +43,6 @@ let Oracale = function (canvas) {
     this.draw = function () {
 
         for (var i = 0; i < pipe.length; i++) {
-
-
             this.ctx.drawImage(pipeNorth, pipe[i].x, pipe[i].y);
             this.ctx.drawImage(PipeSouth, pipe[i].x, pipe[i].y + constant);
 
@@ -46,6 +63,7 @@ let Oracale = function (canvas) {
             }
             if (pipe[i].x === drawbird.getx()) {
                 score += 1;
+                scor.play();
             }
 
 
@@ -55,7 +73,7 @@ let Oracale = function (canvas) {
         this.ctx.fillText("Score : " + score, 30, 30);
 
     }
-}
+};
 let drawpipe = new Oracale(canvas);
 drawpipe.draw();
 
