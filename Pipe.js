@@ -27,7 +27,7 @@ var scor = new Audio();
 //     }
 // }
 let gap = 120;
-let constant = pipeNorth.height + gap;
+
 let pipesize=80;
 let Oracale = function (canvas) {
     this.canvas = canvas;
@@ -41,7 +41,7 @@ let Oracale = function (canvas) {
     };
     let score = 0;
     this.draw = function () {
-
+        let constant = pipeNorth.height + gap;
         for (var i = 0; i < pipe.length; i++) {
             this.ctx.drawImage(pipeNorth, pipe[i].x, pipe[i].y);
             this.ctx.drawImage(PipeSouth, pipe[i].x, pipe[i].y + constant);
